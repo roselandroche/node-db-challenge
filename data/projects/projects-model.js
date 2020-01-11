@@ -1,7 +1,12 @@
 const db = require("../db-config")
 
-function getResources(project_id) {
-    
+async function getResources(project_id) {
+    const resources = await db("projects_resources as p_r")
+        .join("projects as p", "p_r.projects_id", "p.id")
+        .join("resources as r", "p_r.resources_id", "r.id")
+        .select("p.name", "r.name")
+        .where("p.id", project_id)
+    return resources
 }
 
 function addResource() {
@@ -30,7 +35,7 @@ async function getTasks(project_id) {
 }
 
 function addTask(project_id) {
-    
+
 }
 
 module.exports = {
