@@ -14,4 +14,15 @@ router.get("/projects", async (req, res, next) => {
     }
 })
 
+// add a project
+router.post("/projects", async (req, res, next) => {
+    try {
+        const newProject = await projectsModel.addProject(req.body)
+        res.status(201).json(newProject)
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
 module.exports = router

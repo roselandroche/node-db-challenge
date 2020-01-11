@@ -9,11 +9,12 @@ function addResource() {
 }
 
 function getProjects() {
-    return db("projects").select()
+    return db("projects").first()
 }
 
-function addProject() {
-
+async function addProject(newProject) {
+    const [id] = await db("projects").insert(newProject)
+    return db("projects").where({ id }).first()
 }
 
 function getTasks(project_id) {
