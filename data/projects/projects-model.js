@@ -17,8 +17,6 @@ async function addResource(newResource) {
 
 function getProjects() {
     return db("projects")
-        .select("name", "description", "completed")
-        .first()
 }
 
 function getProjectById(id) {

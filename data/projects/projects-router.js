@@ -7,7 +7,15 @@ const router = express.Router()
 // get all projects
 router.get("/projects", async (req, res, next) => {
     try {
-        res.json(await projectsModel.getProjects())
+        const projectList = await projectsModel.getProjects()
+        for(let i = 0; i < projectList.length; i ++) {
+            if(projectList[i].completed === 0) {
+                projectList[i].completed = false;
+            } else {
+                projectList[i].completed = true;
+            }
+        }
+        res.json(projectList)
     }
     catch(err) {
         next(err)
@@ -46,7 +54,15 @@ router.post("/projects", async (req, res, next) => {
 router.get("/tasks/:id", async (req, res, next) => {
     const { id } = req.params;
     try {
-        res.json(await projectsModel.getTasks(id))
+        const taskList = await projectsModel.getTasks(id)
+        for(let i = 0; i < taskList.length; i ++) {
+            if(taskList[i].completed === 0) {
+                taskList[i].completed = false;
+            } else {
+                taskList[i].completed = true;
+            }
+        }
+        res.json(taskList)
     }
     catch(err) {
         next(err)
