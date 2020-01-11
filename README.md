@@ -20,13 +20,13 @@ Follow these steps to set up and work on your project:
 - [x] Add your _Team Lead_ as collaborator on Github.
 - [x] Clone your forked version of the Repository.
 - [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
+- [x] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
+- [x] Please don't merge your own pull request.
 - [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
 - [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
 
@@ -38,13 +38,23 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain the difference between `Relational Databases` and `SQL`.
+- [x] Explain the difference between `Relational Databases` and `SQL`.
 
-- [ ] Why do tables need a `primary key`?
+Relational databases are collections of data stored in tables, where the data can easily be retrieved and manipulated. 
 
-- [ ] What is the name given to a table column that references the primary key on another table.
+SQL is the standard language developers use to manage and interact with databases.
 
-- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+- [x] Why do tables need a `primary key`?
+
+Primary keys give each entry in the database a unique identifier, which means developers can easily grab and use those entries.
+
+- [x] What is the name given to a table column that references the primary key on another table.
+
+Foreign key
+
+- [x] What do we need in order to have a _many to many_ relationship between two tables.
+
+Intermediary table
 
 ## Minimum Viable Product
 
