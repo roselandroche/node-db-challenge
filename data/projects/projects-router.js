@@ -54,24 +54,14 @@ router.get("/tasks/:id", async (req, res, next) => {
 })
 
 // add task
-router.post("/tasks/:id", (req, res, next) => {
-    const newTask = req.body;
-    const { id } = req.params;
-
-    projectsModel.getProjectById(id)
-    .then(project => {
-        if(project) {
-            projectsModel.addTask(newTask, id)
-            .then(addedTask => {
-                res.status(201).json(addedTask)
-            })
-        } else {
-            res.status(404).json({message: "Invalid project"})
-        }
-    })
-    .catch(err => {
+router.post("/tasks", async (req, res, next) => {
+    try {
+        const newTask = await projectsModel.addTask(req.body)
+        res.status(201).json(newTask)
+    }
+    catch(err) {
         next(err)
-    })
+    }
 })
 
 // get resources by id
@@ -79,6 +69,17 @@ router.get("/resources/:id", async (req, res, next) => {
     const { id } = req.params;
     try {
         res.json(await projectsModel.getResources(id))
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
+// add resource
+router.post("/resources", async (req, res, next) => {
+    try {
+        const newResource = await projectsModel.addResource(req.body)
+        res.status(201).json(newResource)
     }
     catch(err) {
         next(err)

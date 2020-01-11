@@ -6,19 +6,23 @@ async function getResources(project_id) {
         .join("resources as r", "p_r.resources_id", "r.id")
         .select("p.name", "r.name")
         .where("p.id", project_id)
+        .first()
     return resources
 }
 
-function addResource() {
-
+async function addResource(newResource) {
+    const [id] = await db("resources").insert(newResource)
+    return db("resources").where({ id }).first()
 }
 
 function getProjects() {
-    return db("projects").first()
+    return db("projects")
+        .select("name", "description", "completed")
+        .first()
 }
 
 function getProjectById(id) {
-    return db("projects").where({id}).first()
+    return db("projects").where({ id }).first()
 }
 
 async function addProject(newProject) {
@@ -34,8 +38,9 @@ async function getTasks(project_id) {
     return tasks
 }
 
-function addTask(project_id) {
-
+async function addTask(newTask) {
+    const [id] = await db("tasks").insert(newTask)
+    return db("tasks").where({ id }).first()
 }
 
 module.exports = {
