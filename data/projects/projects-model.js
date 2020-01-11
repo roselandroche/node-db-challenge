@@ -17,8 +17,11 @@ async function addProject(newProject) {
     return db("projects").where({ id }).first()
 }
 
-function getTasks(project_id) {
-    
+async function getTasks() {
+    const tasks = await db("tasks as t")
+        .join("projects as p", "t.projects_id", "p.id")
+        .select("p.name", "t.id", "t.description", "t.completed")
+    return tasks
 }
 
 function addTask() {

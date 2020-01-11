@@ -25,4 +25,14 @@ router.post("/projects", async (req, res, next) => {
     }
 })
 
+// get tasks
+router.get("/tasks", async (req, res, next) => {
+    try {
+        res.json(await projectsModel.getTasks())
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
 module.exports = router
