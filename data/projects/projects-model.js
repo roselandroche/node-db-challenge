@@ -1,7 +1,7 @@
 const db = require("../db-config")
 
-function getResources() {
-
+function getResources(project_id) {
+    
 }
 
 function addResource() {
@@ -9,15 +9,15 @@ function addResource() {
 }
 
 function getProjects() {
-
+    return db("projects").select()
 }
 
 function addProject() {
 
 }
 
-function getTasks() {
-
+function getTasks(project_id) {
+    
 }
 
 function addTask() {

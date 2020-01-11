@@ -5,7 +5,7 @@ const server = express()
 const port = process.env.port || 4000
 
 server.use(express.json())
-server.use("/api/projects", projectsRouter)
+server.use("/api", projectsRouter)
 
 server.use((err, req, res, next) => {
     console.log("Error:", err)
