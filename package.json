@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/roselandroche/node-db-challenge/issues"
   },
-  "homepage": "https://github.com/roselandroche/node-db-challenge#readme"
+  "homepage": "https://github.com/roselandroche/node-db-challenge#readme",
+  "dependencies": {
+    "knex": "^0.20.7",
+    "sqlite3": "^4.1.1"
+  }
 }
