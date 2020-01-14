@@ -1,12 +1,8 @@
 const db = require("../db-config")
 
-async function getResources(project_id) {
-    const resources = await db("projects_resources as p_r")
-        .join("projects as p", "p_r.projects_id", "p.id")
-        .join("resources as r", "p_r.resources_id", "r.id")
-        .select("p.name", "r.name")
-        .where("p.id", project_id)
-        .first()
+async function getResources() {
+    const resources = await db("resources as r")
+        .select("r.name")
     return resources
 }
 
@@ -28,11 +24,10 @@ async function addProject(newProject) {
     return db("projects").where({ id }).first()
 }
 
-async function getTasks(project_id) {
+async function getTasks() {
     const tasks = await db("tasks as t")
         .join("projects as p", "t.projects_id", "p.id")
         .select("p.name", "p.description", "t.id", "t.description", "t.completed")
-        .where("p.id", project_id)
     return tasks
 }
 

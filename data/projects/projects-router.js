@@ -51,10 +51,9 @@ router.post("/projects", async (req, res, next) => {
 })
 
 // get tasks by id
-router.get("/tasks/:id", async (req, res, next) => {
-    const { id } = req.params;
+router.get("/tasks", async (req, res, next) => {
     try {
-        const taskList = await projectsModel.getTasks(id)
+        const taskList = await projectsModel.getTasks()
         for(let i = 0; i < taskList.length; i ++) {
             if(taskList[i].completed === 0) {
                 taskList[i].completed = false;
@@ -80,11 +79,12 @@ router.post("/tasks", async (req, res, next) => {
     }
 })
 
-// get resources by id
-router.get("/resources/:id", async (req, res, next) => {
-    const { id } = req.params;
+// get resources
+router.get("/resources", async (req, res, next) => {
     try {
-        res.json(await projectsModel.getResources(id))
+        let resourcesArr = await projectsModel.getResources()
+        res.json(resourcesArr)
+        console.log(resourcesArr.length)
     }
     catch(err) {
         next(err)
@@ -96,6 +96,7 @@ router.post("/resources", async (req, res, next) => {
     try {
         const newResource = await projectsModel.addResource(req.body)
         res.status(201).json(newResource)
+        console.log(req.body)
     }
     catch(err) {
         next(err)
